@@ -1,0 +1,38 @@
+name: Reportar un error
+description: Ayuda a comprobar Despierta en tu teléfono
+title: "[Error] "
+body:
+  - type: textarea
+    id: diagnosis
+    attributes:
+      label: Diagnóstico de compatibilidad
+      description: Cópialo desde Ajustes > Listo para viajar > Compatibilidad y diagnóstico. No incluyas coordenadas ni información personal.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      placeholder: "1. Creo una alarma...
+2. Bloqueo el teléfono..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Qué esperabas y qué ocurrió
+    validations:
+      required: true
+  - type: dropdown
+    id: screen
+    attributes:
+      label: Estado de pantalla
+      options:
+        - Bloqueada
+        - Desbloqueada
+        - Ambos
+  - type: textarea
+    id: environment
+    attributes:
+      label: Condiciones
+      description: Batería/restricciones, GPS, audífonos y si pasó al probar o durante un viaje. No compartas tu recorrido.

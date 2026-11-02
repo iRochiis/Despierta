@@ -1,0 +1,15 @@
+version: 2.12.1
+apkFileName: Despierta (12).apk
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: 26
+  targetSdkVersion: 35
+packageInfo:
+  forcedPackageId: 127
+versionInfo:
+  versionCode: 33
+  versionName: 0.33
+doNotCompress:
+- arsc
