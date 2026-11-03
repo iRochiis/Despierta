@@ -7,6 +7,7 @@ MODE="${1:-unsigned}"
 case "$MODE" in unsigned|debug|release) ;; *) echo 'Uso: bash build.sh [unsigned|debug|release]' >&2; exit 2;; esac
 BT="$ANDROID_HOME/build-tools/35.0.0"
 JAR="$ANDROID_HOME/platforms/android-35/android.jar"
+python3 scripts/check-gps-warning.py
 bash scripts/bootstrap-tools.sh
 rm -rf out
 mkdir -p out/classes out/dex

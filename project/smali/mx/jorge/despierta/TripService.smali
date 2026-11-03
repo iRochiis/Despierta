@@ -161,6 +161,17 @@
 .method alarm(Lorg/json/JSONObject;Ljava/lang/String;Z)V
     .locals 4
 
+    # Signal failures are service status, never arrival alarms.
+    # Return before selecting a repeating pattern, taking a wake lock,
+    # changing ringing, promoting media playback or showing full screen UI.
+    if-eqz p3, :arrival_only
+    invoke-virtual {p0, p2}, Lmx/jorge/despierta/TripService;->update(Ljava/lang/String;)V
+    return-void
+
+    :arrival_only
+    # Arrival is already confirmed; stop location acquisition while ringing.
+    invoke-virtual {p0}, Lmx/jorge/despierta/TripService;->stopTracking()V
+
     invoke-static {p1}, Lmx/jorge/despierta/PatternPlayer;->select(Lorg/json/JSONObject;)V
     invoke-static {p0, p3}, Lmx/jorge/despierta/JourneyEngine;->alert(Landroid/content/Context;Z)V
 
@@ -1900,3 +1911,4 @@
     :done
     return-void
 .end method
+
